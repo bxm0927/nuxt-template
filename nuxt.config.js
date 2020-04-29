@@ -1,6 +1,6 @@
-
-export default {
+module.exports = {
   mode: 'universal',
+
   /*
   ** Headers of the page
   */
@@ -15,30 +15,38 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: {
+    color: '#fff'
+  },
+
   /*
   ** Global CSS
   */
   css: [
   ],
+
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
   ],
+
   /*
   ** Nuxt.js dev-modules
   */
   buildModules: [
   ],
+
   /*
   ** Nuxt.js modules
   */
   modules: [
   ],
+
   /*
   ** Build configuration
   */
@@ -47,6 +55,15 @@ export default {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
-    }
+    },
+    /**
+     * You can extend babel config here
+     */
+    babel: {
+      // 按需加载 Element UI
+      // @see https://element.eleme.io/#/zh-CN/component/quickstart
+      // @see https://zh.nuxtjs.org/api/configuration-build/#babel
+      plugins: [['component', { libraryName: 'element-ui', styleLibraryName: 'theme-chalk' }]],
+    },
   }
 }

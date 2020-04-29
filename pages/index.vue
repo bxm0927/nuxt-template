@@ -9,11 +9,7 @@
         My sublime Nuxt.js project
       </h2>
       <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
+        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
           Documentation
         </a>
         <a
@@ -24,18 +20,24 @@
           GitHub
         </a>
       </div>
+
+      <el-button type="primary">主要按钮</el-button>
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import Vue from "vue";
+import Logo from "~/components/Logo.vue";
+import { Button } from "element-ui";
+
+Vue.use(Button);
 
 export default {
   components: {
     Logo
   }
-}
+};
 </script>
 
 <style>
@@ -49,8 +51,8 @@ export default {
 }
 
 .title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 100px;
