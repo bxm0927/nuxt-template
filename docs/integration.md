@@ -96,6 +96,8 @@ npm install --save-dev eslint prettier babel-eslint eslint-loader eslint-config-
 
 TODO: Lint staged files
 
+有个最佳实践是在 package.json 中增加 "precommit": "npm run lint" ，这样可以实现每次提交代码之前自动进行代码检测校验。
+
 ## 集成 development tools
 
 1. [jsconfig.json](https://code.visualstudio.com/docs/languages/jsconfig)
