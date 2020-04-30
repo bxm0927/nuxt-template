@@ -1,0 +1,263 @@
+/*
+ * CSS General Functional Style
+ * @Author: xiaoming.bai
+ * @Date: 2018-11-27 11:02:41
+ * @Last Modified by: xiaoming.bai
+ * @Last Modified time: 2020-05-01 00:01:30
+ */
+
+// ****************************************** Layouts ******************************************* //
+
+// Page container
+.container {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1170px;
+}
+
+// Transform centering
+// Horizontally and vertically centers a child element within a parent element using `position: absolute` and `transform: translate()`.
+// Similar to `flexbox`, this method does not require you to know the height or width of your parent or child so it is ideal for responsive applications.
+.transform-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// Flexbox centering
+// Horizontally and vertically centers a child element within a parent element using `flexbox`.
+.flexbox-center {
+  display: flex;           // enables flexbox.
+  align-items: center;     // centers the child vertically.
+  justify-content: center; // centers the child horizontally.
+}
+
+// Grid centering
+// Horizontally and vertically centers a child element within a parent element using `grid`.
+.grid-center {
+  display: grid;           // enables grid.
+  align-items: center;     // centers the child vertically.
+  justify-content: center; // centers the child horizontally.
+}
+
+// ***************************************** Functions ****************************************** //
+
+// Display and Hide
+.hide { display: none !important; }
+.show { display: block !important; }
+.inline-block { display: inline-block !important; }
+.visible { visibility: visible !important; }
+.invisible { visibility: hidden !important; }
+
+// Floating and Clearing Floating
+.fl { float: left; }
+.fr { float: right; }
+.clearfix::after { content: ''; display: block; clear: both; visibility: hidden; height: 0; }
+.clearfix { *zoom: 1; }
+
+// Truncate text
+// If the text is longer than one line, it will be truncated and end with an ellipsis `…`.
+.ellipsis {
+  // display: inline-block;
+  // max-width: 90%; // ensures the element has a dimension, to know when to get ellipsis.
+  white-space: nowrap;
+  word-wrap: break-word;
+  word-break: break-all;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis; // makes it so that if the text exceeds its dimensions, it will end with an ellipsis.
+  overflow: hidden;
+}
+
+// Forbidden text to be selected
+.unselectable {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+// Hide mouse cursor
+.uncursor { cursor: none; }
+
+// Remove input、button、select Ugly highlighted border when selected
+.unoutline { outline: none; }
+
+// Remove textarea、input default styles (rounded corners and inner shadows on IOS, etc.)
+.unappearance { -webkit-appearance: none; }
+
+// 去除移动端按钮 tap 后会出现一个半透明的灰色背景
+.remove-tap-highlight { -webkit-tap-highlight-color: transparent; }
+
+// 鼠标禁用样式，但仍然可以触发事件
+// <input type="text" disabled="disabled">
+.notallowed { cursor: not-allowed; }
+
+// 禁用元素事件
+// 1. 阻止任何点击动作的执行
+// 2. 使链接显示为默认光标(cursor:default)
+// 3. 阻止触发hover和active状态
+// 4. 阻止JavaScript点击事件的触发
+.unevents { pointer-events: none; }
+
+// Offscreen
+// Completely hide an element visually and positionally in the DOM
+.offscreen {
+  position: absolute;
+  margin: -1px; // Negate the elements height and width using `margin: -1px`.
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0); // Use clip to indicate that no part of the element should be shown.
+}
+
+.offscreen2 {
+  position: absolute;
+  left: -9999px;
+}
+
+// 隐藏文本，多用于 SEO
+// <a href=""><h1 class="text-hide">logo etc...</h1></a>
+.hide-text {
+  text-indent: -9999px;
+  overflow: hidden;
+  text-align: left;
+}
+
+// 文字透明
+.transparent-text {
+  font: 0/0 serif;
+  color: transparent;
+  background-color: transparent;
+  text-shadow: none;
+  border: 0;
+}
+
+// 文字模糊
+.blur {
+  -webkit-filter: blur(7px);
+  filter: blur(7px);
+}
+
+// 书写模式：牌匾从右至左水平单行排版效果、文笺从右至左、从上至下排版效果
+.retext-x { direction: rtl; unicode-bidi: bidi-override; }
+.retext-y { writing-mode: tb-rl; writing-mode: vertical-rl; }
+
+// 扩大热区
+.extend-hotspot {
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+  }
+}
+
+// fadeIn、fadeOut
+.fade {
+  opacity: 0;
+  filter: alpha(opacity=0)\9;
+  -webkit-transition: opacity .15s linear;
+  transition: opacity .15s linear;
+}
+.fade.in {
+  opacity: 1;
+  filter: alpha(opacity=100)\9;
+}
+
+// ***************************************** transition ***************************************** //
+
+// 淡入淡出
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.25s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+.page-enter-active, .page-leave-active {
+  transition: opacity .5s
+}
+.page-enter, .page-leave-active {
+  opacity: 0
+}
+
+.bounce-enter-active {
+  animation: bounce-in .8s;
+}
+.bounce-leave-active {
+  animation: bounce-out .5s;
+}
+@keyframes bounce-in {
+  0% { transform: scale(0) }
+  50% { transform: scale(1.5) }
+  100% { transform: scale(1) }
+}
+@keyframes bounce-out {
+  0% { transform: scale(1) }
+  50% { transform: scale(1.5) }
+  100% { transform: scale(0) }
+}
+
+.slide-left-enter,
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate(30px, 0);
+}
+.slide-left-leave-active,
+.slide-right-enter {
+  opacity: 0;
+  transform: translate(-30px, 0);
+}
+
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .3s ease;
+}
+.slide-fade-enter, .slide-fade-leave-to  {
+  transform: translateY(-20px);
+  opacity: 0;
+}
+
+// ***************************************** Components ***************************************** //
+
+// button
+.btn {
+  display: inline-block;
+  padding: 0 14px;
+  border-radius: 6px;
+  text-align: center;
+  white-space: nowrap;
+  transition: all .25s;
+  user-select: none;
+  cursor: pointer;
+}
+
+// 全屏遮罩
+.screen-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  .mask-content {
+    @extend .transform-center;
+  }
+}
+
+// ******************************************* Custom ******************************************* //
+
+// 去掉百度地图版权信息
+.BMap_cpyCtrl { display: none; }
+.anchorBL a { display: none; }

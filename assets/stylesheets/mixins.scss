@@ -1,0 +1,14 @@
+// 文本溢出省略号显示 (多行)
+// 只支持 webkit 浏览器, 解决方案: 高度 = 行高 * 行数
+// max-height: 90px; line-height: 30px; -webkit-line-clamp: 3;
+@mixin ellipsis-mult($line: 3) {
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  /* autoprefixer: off */
+  -webkit-box-orient: vertical;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  overflow: hidden;
+}
