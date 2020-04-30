@@ -3,9 +3,26 @@
  * @Author: xiaoming.bai
  * @Date: 2020-04-29 23:09:44
  * @Last Modified by: xiaoming.bai
- * @Last Modified time: 2020-04-29 23:52:09
+ * @Last Modified time: 2020-04-30 16:18:59
  */
 
 export const state = () => ({
   test: 'Here is the list store!',
+
+  classesList: [],
 })
+
+export const mutations = {
+  setClassesList(state, payload) {
+    state.classesList = payload
+  },
+}
+
+export const actions = {
+  async fetchClassesList({ commit }) {
+    const { status, data } = await this.$axios.get('/list/search')
+    if (status === 200 && data) {
+      commit('setClassesList', data)
+    }
+  },
+}

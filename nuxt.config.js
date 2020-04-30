@@ -3,7 +3,7 @@
  * @Author: xiaoming.bai
  * @Date: 2020-04-30 01:02:10
  * @Last Modified by: xiaoming.bai
- * @Last Modified time: 2020-04-30 02:11:44
+ * @Last Modified time: 2020-04-30 16:29:48
  */
 
 module.exports = {
@@ -63,6 +63,7 @@ module.exports = {
    ** Build configuration
    */
   build: {
+    transpile: [/^element-ui/],
     /*
      ** You can extend webpack config here
      */
