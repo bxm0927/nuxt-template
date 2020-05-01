@@ -3,14 +3,14 @@
  * @Author: xiaoming.bai
  * @Date: 2020-04-30 01:02:10
  * @Last Modified by: xiaoming.bai
- * @Last Modified time: 2020-05-01 00:20:14
+ * @Last Modified time: 2020-05-01 12:04:58
  */
 const config = require('./config')
 const isDev = process.env.NODE_ENV !== 'production'
-console.log('Nuxt.js Configuration isDev: ', isDev)
 
 module.exports = {
   mode: 'universal',
+  dev: isDev,
   server: {
     port: config.server.port, // default: 3000
     host: config.server.host, // default: 'localhost'

@@ -9,18 +9,20 @@ const { Nuxt, Builder } = require('nuxt')
 const app = express()
 
 // Import and Set Nuxt.js options
-const config = require('../nuxt.config.js')
-config.dev = process.env.NODE_ENV !== 'production'
+const nuxtConfig = require('../nuxt.config.js')
+
+// Register variable to global
+const SuperGlobal = require('./global')
+SuperGlobal.registerGlobal()
 
 async function start() {
   // Init Nuxt.js
-  const nuxt = new Nuxt(config)
+  const nuxt = new Nuxt(nuxtConfig)
   const { host, port } = nuxt.options.server
-  console.log('nuxt.options: ', nuxt.options)
 
-  await nuxt.ready()
   // Build only in dev mode
-  if (config.dev) {
+  await nuxt.ready()
+  if (nuxtConfig.dev) {
     const builder = new Builder(nuxt)
     await builder.build()
   }
