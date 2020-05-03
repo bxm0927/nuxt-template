@@ -1,26 +1,29 @@
 /*
- * Bind variables to global.app
+ * Bind variables to `global.app`
  * @Author: xiaoming.bai
  * @Date: 2020-05-01 01:37:16
  * @Last Modified by: xiaoming.bai
- * @Last Modified time: 2020-05-01 12:10:31
+ * @Last Modified time: 2020-05-03 12:23:32
  */
 
-const http = require('./http')
-const logger = require('./logger')
+const Http = require('./http')
+const Logger = require('./logger')
+const BaseModel = require('./base-model')
 const config = require('../../config')
 
 class Lib {
   constructor() {
-    this.$http = http
-    this.$logger = logger
-    this.$config = config
+    this.config = config
+    this.Http = Http
+    this.Logger = Logger
+    this.BaseModel = BaseModel
   }
 }
 
 const SuperGlobal = {
   /**
-   * 为了方便后需操作，在全局对象(`global.app`)上绑定一些变量
+   * 为了方便后需操作，在全局对象(`global.app`)上绑定一些变量。
+   * 然后，你可以这样使用他们：`golbal.app.BaseModel` ...
    */
   registerGlobal() {
     global.app = this.init()

@@ -1,4 +1,3 @@
-const morgan = require('morgan')
 const express = require('express')
 const consola = require('consola')
 const bodyParser = require('body-parser')
@@ -27,14 +26,22 @@ async function start() {
     await builder.build()
   }
 
+  // Use common middleware
   app.use(bodyParser.json()) // parse application/json
   app.use(bodyParser.urlencoded({ extended: false })) // parse application/x-www-form-urlencoded
   app.use(cookieParser()) // parse HTTP request cookies
   app.use(compression()) // compress all responses
-  app.use(morgan('combined')) // HTTP request logger
+
+  // Use custom middleware
+  try {
+    app.use(require('./middleware/ctx')())
+  } catch (error) {
+    console.error('Server error: ', error)
+    // global.app.Logger.error('Server error: ', error)
+  }
 
   // Dispatch routers
-  require('./routes')(app)
+  require('./apps/routes')(app)
 
   // Give nuxt middleware to express
   app.use(nuxt.render)

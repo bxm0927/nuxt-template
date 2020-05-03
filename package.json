@@ -22,7 +22,9 @@
     "express": "^4.17.1",
     "lodash": "^4.17.15",
     "morgan": "^1.10.0",
-    "nuxt": "^2.12.2"
+    "nuxt": "^2.12.2",
+    "request-promise": "^4.2.5",
+    "url-join": "^4.0.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
