@@ -3,7 +3,7 @@
  * @Author: xiaoming.bai
  * @Date: 2020-04-29 23:09:44
  * @Last Modified by: xiaoming.bai
- * @Last Modified time: 2020-05-04 16:25:41
+ * @Last Modified time: 2020-05-04 17:54:21
  */
 
 import formatPage from '@/assets/javascripts/utils/formatPage'
@@ -40,7 +40,7 @@ export const mutations = {
 export const actions = {
   async fetchClassesData({ state, commit }, payload) {
     const params = { ...state.searchParams, ...payload }
-    const { status, data } = await this.$axios.get('/list/search', { params })
+    const { status, data } = await this.$axios.get('/node/list/search', { params })
 
     if (status === 200 && data) {
       const pageSize = 6

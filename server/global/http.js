@@ -4,7 +4,7 @@
  * @Author: xiaoming.bai
  * @Date: 2020-05-01 11:13:00
  * @Last Modified by: xiaoming.bai
- * @Last Modified time: 2020-05-04 11:59:15
+ * @Last Modified time: 2020-05-04 18:05:39
  */
 
 /**
@@ -56,11 +56,12 @@ class Request {
         .then((result) => {
           const duration = timer.stop('getApi') // 停止计时
           const message = `${duration} ${options.method} ${url}`
+          const errorMessage = `${message} -> ${result.msg}`
 
           if (result) {
             global.app.Logger.info(message)
           } else {
-            global.app.Logger.error(`${message} ${result.msg}`)
+            global.app.Logger.error(errorMessage)
           }
 
           return result
@@ -68,7 +69,7 @@ class Request {
         .catch((reason) => {
           const { statusCode, error } = reason
           const duration = timer.stop('getApi') // 停止计时
-          const message = `${duration} ${options.method} ${url} ${reason}`
+          const message = `${duration} ${options.method} ${url} -> ${reason}`
 
           global.app.Logger.error(message)
           ctx.res.status(statusCode).send(error)
