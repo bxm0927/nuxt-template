@@ -21,10 +21,11 @@
     "element-ui": "^2.13.1",
     "express": "^4.17.1",
     "lodash": "^4.17.15",
-    "morgan": "^1.10.0",
     "nuxt": "^2.12.2",
     "request-promise": "^4.2.5",
-    "url-join": "^4.0.1"
+    "url-join": "^4.0.1",
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^4.4.2"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",

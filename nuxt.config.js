@@ -3,7 +3,7 @@
  * @Author: xiaoming.bai
  * @Date: 2020-04-30 01:02:10
  * @Last Modified by: xiaoming.bai
- * @Last Modified time: 2020-05-01 12:04:58
+ * @Last Modified time: 2020-05-03 14:57:51
  */
 const config = require('./config')
 const isDev = process.env.NODE_ENV !== 'production'
@@ -51,7 +51,11 @@ module.exports = {
   /*
    ** Global CSS
    */
-  css: [],
+  css: [
+    '@/assets/stylesheets/reset.scss',
+    '@/assets/stylesheets/common.scss',
+    // '@/assets/fonts/iconfont.css',
+  ],
 
   /*
    ** Plugins to load before mounting the App

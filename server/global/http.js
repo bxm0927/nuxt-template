@@ -1,10 +1,10 @@
 /*
  * HTTP request client for Node.js
- * @See https://github.com/axios/axios
+ * @See https://github.com/request/request-promise
  * @Author: xiaoming.bai
  * @Date: 2020-05-01 11:13:00
  * @Last Modified by: xiaoming.bai
- * @Last Modified time: 2020-05-03 13:29:47
+ * @Last Modified time: 2020-05-04 11:59:15
  */
 
 /**
@@ -55,26 +55,22 @@ class Request {
       return requestPromise(options)
         .then((result) => {
           const duration = timer.stop('getApi') // 停止计时
-          const date = new Date().toLocaleString()
-          const loggerInfo = `${date} ${duration} ${options.method} ${url}`
+          const message = `${duration} ${options.method} ${url}`
 
           if (result) {
-            console.log(loggerInfo)
+            global.app.Logger.info(message)
           } else {
-            console.error(`${loggerInfo} ${result.msg}`)
-            // TODO: logger
+            global.app.Logger.error(`${message} ${result.msg}`)
           }
 
           return result
         })
         .catch((reason) => {
-          const duration = timer.stop('getApi') // 停止计时
-          const date = new Date().toLocaleString()
-          const loggerInfo = `Request failed: ${date} ${duration} ${options.method} ${url} ${reason}`
-          console.error(loggerInfo)
-          // TODO: logger
-
           const { statusCode, error } = reason
+          const duration = timer.stop('getApi') // 停止计时
+          const message = `${duration} ${options.method} ${url} ${reason}`
+
+          global.app.Logger.error(message)
           ctx.res.status(statusCode).send(error)
         })
     }

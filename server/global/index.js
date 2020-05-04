@@ -3,7 +3,7 @@
  * @Author: xiaoming.bai
  * @Date: 2020-05-01 01:37:16
  * @Last Modified by: xiaoming.bai
- * @Last Modified time: 2020-05-03 12:23:32
+ * @Last Modified time: 2020-05-03 16:54:28
  */
 
 const Http = require('./http')
@@ -14,8 +14,8 @@ const config = require('../../config')
 class Lib {
   constructor() {
     this.config = config
-    this.Http = Http
     this.Logger = Logger
+    this.Http = Http
     this.BaseModel = BaseModel
   }
 }

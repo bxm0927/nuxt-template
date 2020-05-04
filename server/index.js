@@ -1,3 +1,11 @@
+/*
+ * Server(Node.js) entrance file
+ * @Author: xiaoming.bai
+ * @Date: 2020-05-04 12:06:09
+ * @Last Modified by: xiaoming.bai
+ * @Last Modified time: 2020-05-04 13:45:52
+ */
+
 const express = require('express')
 const consola = require('consola')
 const bodyParser = require('body-parser')
@@ -36,8 +44,7 @@ async function start() {
   try {
     app.use(require('./middleware/ctx')())
   } catch (error) {
-    console.error('Server error: ', error)
-    // global.app.Logger.error('Server error: ', error)
+    global.app.Logger.error('Use custom middleware error: ', error)
   }
 
   // Dispatch routers

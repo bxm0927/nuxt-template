@@ -1,15 +1,17 @@
 /*
  * Node.js 计时器
- * Usage:
- *   const timer = new Timer()
- *   timer.start('getApi')
- *   const duration = timer.stop('getApi')
- *
  * @See: http://nodejs.cn/api/process.html#process_process_hrtime_time
  * @Author: xiaoming.bai
  * @Date: 2020-05-03 00:10:35
  * @Last Modified by: xiaoming.bai
- * @Last Modified time: 2020-05-03 01:41:22
+ * @Last Modified time: 2020-05-04 11:41:42
+ */
+
+/**
+ * Usage:
+ * - `const timer = new Timer()`
+ * - `timer.start('getApi')`
+ * - `const duration = timer.stop('getApi')`
  */
 
 /**

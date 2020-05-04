@@ -10,4 +10,14 @@ module.exports = {
     port: 9000,
     host: 'localhost',
   },
+
+  // Node.js 日志服务配置项
+  logger: {
+    console: {
+      level: 'debug',
+      colorize: 'all',
+      prettyPrint: true,
+      handleExceptions: true,
+    },
+  },
 }
