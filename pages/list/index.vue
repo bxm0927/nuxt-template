@@ -1,34 +1,24 @@
 <template>
   <div class="page-list">
-    <h1>page-list</h1>
-
-    <ul>
-      <li v-for="item in classesList" :key="item.id">
-        <img :src="item.image" :alt="item.title" />
-        <h3 class="title">{{ item.title }}</h3>
-      </li>
-    </ul>
+    <Banner />
+    <NoteWrapper />
+    <Pagination />
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import Banner from '@/components/pages/list/Banner.vue'
+import NoteWrapper from '@/components/pages/list/NoteWrapper.vue'
+import Pagination from '@/components/pages/list/Pagination.vue'
 
 export default {
-  // async fetch({ store }) {
-  //   await store.dispatch('list/fetchClassesList')
-  // },
-  computed: {
-    ...mapState('list', ['classesList']),
+  components: {
+    Banner,
+    NoteWrapper,
+    Pagination,
   },
-  mounted() {
-    this.$store.dispatch('list/fetchClassesList')
+  async fetch({ store }) {
+    await store.dispatch('list/fetchClassesData')
   },
 }
 </script>
-
-<style lang="scss" scoped>
-.page-list {
-  color: red;
-}
-</style>

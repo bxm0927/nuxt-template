@@ -22,8 +22,8 @@
 <script>
 import Vue from 'vue'
 import { mapState, mapMutations } from 'vuex'
-import Logo from '~/components/Logo.vue'
 import { Button } from 'element-ui'
+import Logo from '@/components/Logo.vue'
 
 Vue.use(Button)
 
@@ -31,24 +31,15 @@ export default {
   components: {
     Logo,
   },
-  // 在页面初始化之前请求一些数据
   async fetch({ store }) {
     await store.dispatch('fetchCount')
   },
-  data() {
-    return {
-      ip: '',
-    }
-  },
   computed: {
-    // 映射 this.count 为 this.$store.state.count
+    // 将 this.$store.state.count 映射为 this.count
     ...mapState(['count']),
   },
-  mounted() {
-    this.fetchIP()
-  },
   methods: {
-    // 将 `this.setCount()` 映射为 `this.$store.commit('setCount')`
+    // 将 this.$store.commit('setCount') 映射为 this.setCount()
     ...mapMutations(['setCount']),
     increase() {
       const newCount = this.count + 1
@@ -58,17 +49,11 @@ export default {
       const newCount = this.count - 1
       this.setCount(newCount)
     },
-    async fetchIP() {
-      const { status, data } = await this.$axios.get('http://icanhazip.com')
-      if (status === 200) {
-        this.ip = data
-      }
-    },
   },
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 .container {
   margin: 0 auto;
   min-height: 100vh;
@@ -97,6 +82,31 @@ export default {
 
 .links {
   padding-top: 15px;
+  .button--green {
+    display: inline-block;
+    border-radius: 4px;
+    border: 1px solid #3b8070;
+    color: #3b8070;
+    text-decoration: none;
+    padding: 10px 30px;
+    &:hover {
+      color: #fff;
+      background-color: #3b8070;
+    }
+  }
+  .button--grey {
+    display: inline-block;
+    border-radius: 4px;
+    border: 1px solid #35495e;
+    color: #35495e;
+    text-decoration: none;
+    padding: 10px 30px;
+    margin-left: 15px;
+    &:hover {
+      color: #fff;
+      background-color: #35495e;
+    }
+  }
 }
 
 .count-box {
