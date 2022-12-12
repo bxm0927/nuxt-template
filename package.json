@@ -19,7 +19,7 @@
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.5",
     "element-ui": "^2.13.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "lodash": "^4.17.15",
     "nuxt": "^2.12.2",
     "request-promise": "^4.2.5",
